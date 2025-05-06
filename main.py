@@ -2,6 +2,7 @@ class ToDoList:
     def __init__(self):
         self.tasks = []
 
+
     def add_task(self, task):
         task_exists = False
         for new_task in self.tasks:
@@ -15,6 +16,7 @@ class ToDoList:
 
         self.tasks.append({'task': task, 'completed': False})
 
+
     def complete_task(self, task):
         for complete_task in self.tasks:
             if complete_task['task'] == task:
@@ -26,13 +28,19 @@ class ToDoList:
 
         print("Задача не найдена.")
 
-    def remove_task(self, task):
-        for task_for_remove in self.tasks:
-            if task_for_remove['task'] == task:
-                self.tasks.remove(task_for_remove)
-                return
 
-        print("Задача не найдена.")
+    def remove_task(self, task):
+        remove_task = None
+        for task_to_remove in self.tasks:
+            if task_to_remove['task'] == task:
+                remove_task = task_to_remove
+                break
+
+        if remove_task:
+            self.tasks.remove(remove_task)
+        else:
+            print("Задача не найдена.")
+
 
     def list_tasks(self):
         if not self.tasks:
