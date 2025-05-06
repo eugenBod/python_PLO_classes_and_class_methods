@@ -3,12 +3,25 @@ class ToDoList:
         self.tasks = []
 
     def add_task(self, task):
+        task_exists = False
+        for new_task in self.tasks:
+            if new_task['task'] == task:
+                task_exists = True
+                break
+
+        if task_exists:
+            print("Задача уже существует.")
+            return
+
         self.tasks.append({'task': task, 'completed': False})
 
     def complete_task(self, task):
         for complete_task in self.tasks:
             if complete_task['task'] == task:
-                complete_task['completed'] = True
+                if complete_task['completed']:
+                    print("Задача уже выполнена.")
+                else:
+                    complete_task['completed'] = True
                 return
 
         print("Задача не найдена.")
