@@ -30,14 +30,10 @@ class ToDoList:
 
 
     def remove_task(self, task):
-        remove_task = None
-        for task_to_remove in self.tasks:
-            if task_to_remove['task'] == task:
-                remove_task = task_to_remove
+        for i in range(len(self.tasks)):
+            if self.tasks[i]['task'] == task:
+                del self.tasks[i]
                 break
-
-        if remove_task:
-            self.tasks.remove(remove_task)
         else:
             print("Задача не найдена.")
 
